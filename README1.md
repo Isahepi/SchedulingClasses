@@ -11,78 +11,96 @@ Include Mermaid class diagrams for all classes.
 
 # Database Model
 ## 📊 UML Diagram
-Here's a **Mermaid UML class diagram** that represents the structure of your Flutter code and its relationship with the database/API:
 classDiagram
-  class MyApp {
-    +build(BuildContext context) Widget
-  }
+    class MyApp {
+        +build()
+    }
 
-  class MyHomePage {
-    +title: String
-    +createState() _MyHomePageState
-  }
+    class MyHomePage {
+        +title: String
+        +createState(): State
+    }
 
-  class _MyHomePageState {
-    -selectedName: String?
-    -selectedMajor: String?
-    -majors: List<String>
-    -classList: List<Map<String, dynamic>>
-    +initState()
-    +build(BuildContext context) Widget
-    +loadMajors()
-    +loadStudentNames()
-    +loadClassesForMajor(String major)
-  }
+    class _MyHomePageState {
+        -userName: String
+        -selectedMajor: String?
+        -majors: List<String>
+        -studentNames: List<String>
+        -selectedName: String?
+        -classList: List<Map>
+        -takenClasses: Map<String, bool>
+        +initState()
+        +loadMajors()
+        +loadStudentNames()
+        +loadClassesForMajor(major: String)
+        +build()
+    }
 
-  class SchedulePage {
-    +userName: String
-    +createState() _SchedulePageState
-  }
+    class SchedulePage {
+        +userName: String
+        +createState(): State
+    }
 
-  class _SchedulePageState {
-    -selectedNames: List<String>
-    -studentSchedules: Map<String, Map<String, List<String>>>
-    +initState()
-    +fetchSchedule()
-    +generateTimes(): List<String>
-    +getScheduleColor(String name): Color
-    +build(BuildContext context): Widget
-  }
+    class _SchedulePageState {
+        -selectedNames: List<String>
+        -studentSchedules: Map<String, Map<String, List<String>>>
+        +initState()
+        +fetchSchedule()
+        +generateTimes(): List<String>
+        +getScheduleColor(name: String): Color
+        +build()
+    }
 
-  class API {
-    +GET /api/major : List<Major>
-    +GET /api/students : List<Student>
-    +GET /api/classes : List<Class>
-    +GET /api/schedule : List<Schedule>
-  }
+    class API {
+        <<interface>>
+        +GET /api/major
+        +GET /api/students
+        +GET /api/classes
+        +GET /api/schedule
+    }
 
-  class Student {
-    +name: String
-  }
+    class Database {
+        <<table>>
+        students
+        +id
+        +name
+        +year_id
 
-  class Major {
-    +major_name: String
-  }
+        majors
+        +id
+        +major_name
 
-  class Class {
-    +class_name: String
-  }
+        classes
+        +id
+        +class_name
+        +major_id
 
-  class Schedule {
-    +name: String
-    +day: String
-    +schedules: String
-  }
+        schedule
+        +id
+        +student_id
+        +day
+        +schedules
+    }
 
-  MyApp --> MyHomePage
-  MyHomePage --> _MyHomePageState
-  SchedulePage --> _SchedulePageState
-  _MyHomePageState --> API
-  _SchedulePageState --> API
-  API --> Student
-  API --> Major
-  API --> Class
-  API --> Schedule
+    MyApp --> MyHomePage
+    MyHomePage --> _MyHomePageState
+    SchedulePage --> _SchedulePageState
 
+    _MyHomePageState --> API : calls
+    _SchedulePageState --> API : calls
+
+    API --> Database : queries
+
+    note for Database "This represents the SQL schema"
 
 ### 3.✅ Instructions 
+How to install and run the app.
+How to use key features (add screenshots or GIFs if helpful).
+How do you test it?
+### 4.✅Challenges, Role of AI, Insights
+What problems did you face and solve?
+How did you use AI?
+What did you learn about GUI design, programming, or tools?
+### 5.✅Next Steps
+If you had more time, what would you improve, add, or refactor?
+Any features you'd like to explore in the future?
