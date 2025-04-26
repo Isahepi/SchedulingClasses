@@ -2,6 +2,7 @@
 ### 1.✅ Project Introduction (1 or 2 paragraphs)
 __What does your app do?__
 This app is designed to identify and display scheduling conflicts among students in the CS386 class (excluding current seniors). The main goal is to visually represent when students' classes overlap, helping users understand which time slots are already occupied. By doing this, the app can assist professors or the registrar's office in finding potential time windows where a new class could be added, without yet considering room or instructor availability.
+
 __Who is the target user?__
 The primary users of this app are professors and the registrar’s office, as it supports academic planning. However, the app also includes a feature for students to input the classes they’ve already taken, allowing the system to simulate real-time schedules. This way, users can see a complete view of everyone’s availability and conflicts in one place.
 ### 2.✅ Design and Architecture
@@ -123,8 +124,6 @@ classDiagram
     schedule --> student : FK id_student → student.name
     majors_classes --> major : FK id_major → major.id_major
     majors_classes --> classes : FK id_classes → classes.id_class
-
-
 ```
 
 ### 3.✅ Instructions 
@@ -132,9 +131,16 @@ How to install and run the app.
 How to use key features (add screenshots or GIFs if helpful).
 How do you test it?
 ### 4.✅Challenges, Role of AI, Insights
-What problems did you face and solve?
-How did you use AI?
-What did you learn about GUI design, programming, or tools?
+__What problems did you face and solve?__
+
++Setting up the API, connecting it to the database, and integrating it with Flutter presented multiple challenges. Since the API runs on a specific port, I had to configure it correctly and install several packages on my machine to ensure it could run smoothly.
+
++Integrating the API with Flutter required adding the necessary dependencies and setting up the HTTP environment in Flutter to allow the app to locate and communicate with the API.
+__How did you use AI?__
+
+
+__What did you learn about GUI design, programming, or tools?__
+
 ### 5.✅Next Steps
-If you had more time, what would you improve, add, or refactor?
-Any features you'd like to explore in the future?
+What would you improve, add, or refactor if you had more time?
+Do you have any features you'd like to explore in the future?
