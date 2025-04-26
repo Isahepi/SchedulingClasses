@@ -60,45 +60,63 @@ classDiagram
     }
 
    %% Database Tables
-    class Students {
+    class classes {
         <<table>>
-        +id: int
-        +name: String
-        +year_id: int
-    }
-
-    class Majors {
-        <<table>>
-        +id: int
-        +major_name: String
-    }
-
-    class Classes {
-        <<table>>
-        +id: int
+        +id_class: int
+        +course_number: String
         +class_name: String
-        +major_id: int
+        +hours: String
+        +start_time: String
+        +end_time: String
+        +year: String
+        +days: String
+    }
+
+    class majors_classes {
+        <<table>>
+        +id_majorclasses: int
+        +id_major: int
+        +id_classes: int
+    }
+
+    class major {
+        <<table>>
+        +id_major: int
+        +major_name: String
     }
 
     class Schedule {
         <<table>>
-        +id: int
-        +student_id: int
+        +id_schedule: int
+        +id_student: int
         +day: String
-        +schedules: String
+        +start_time: String
+        +end_time: String
+        
+    }
+    class student {
+        <<table>>
+        +name: String
+        +last_name: String
+        +email: String
+        +year: int
+        +major: String
+        +minor: String
     }
 
     %% App Relationships
     MyApp --> MyHomePage
     MyHomePage --> _MyHomePageState
     SchedulePage --> _SchedulePageState
+    Schedule : +student_id -> Students.id
 
     _MyHomePageState --> API : calls
     _SchedulePageState --> API : calls
-    API --> Students : queries
-    API --> Majors : queries
-    API --> Classes : queries
-    API --> Schedule : queries
+    API --> students : queries
+    API --> major : queries
+    API --> classes : queries
+    API --> schedules : queries
+    API --> major_classes : queries
 
 ```
 
