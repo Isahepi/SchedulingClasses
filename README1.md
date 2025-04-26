@@ -65,7 +65,7 @@ classDiagram
     _MyHomePageState --> API : fetches majors
     _MyHomePageState --> API : fetches students
     _MyHomePageState_
-
+```
 
 ### 3.✅ Instructions 
 How to install and run the app.
