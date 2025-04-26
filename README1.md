@@ -10,7 +10,7 @@ The primary users of this app are professors and the registrar’s office, as it
 Description of how the app is structured.
 Include Mermaid class diagrams for all classes.
 
-# Database Model
+# APP MODEL
 ```mermaid
 classDiagram
     class MyApp {
