@@ -12,27 +12,27 @@ Include Mermaid class diagrams for all classes.
 # Database Model
 ## 📊 UML Diagram
 Here's a **Mermaid UML class diagram** that represents the structure of your Flutter code and its relationship with the database/API:
-
-```mermaid
 classDiagram
   class MyApp {
     +build(BuildContext context) Widget
   }
 
- classDiagram
-class _MyHomePageState {
-  String? selectedName
-  String? selectedMajor
-  List<String> majors
-  List<String> studentNames
-  List<String> classList
+  class MyHomePage {
+    +title: String
+    +createState() _MyHomePageState
+  }
 
-  void initState()
-  Widget build(BuildContext context)
-  Future<void> loadMajors()
-  Future<void> loadStudentNames()
-  Future<void> loadClassesForMajor(String major)
-}
+  class _MyHomePageState {
+    -selectedName: String?
+    -selectedMajor: String?
+    -majors: List<String>
+    -classList: List<Map<String, dynamic>>
+    +initState()
+    +build(BuildContext context) Widget
+    +loadMajors()
+    +loadStudentNames()
+    +loadClassesForMajor(String major)
+  }
 
   class SchedulePage {
     +userName: String
@@ -83,6 +83,6 @@ class _MyHomePageState {
   API --> Major
   API --> Class
   API --> Schedule
-```
+
 
 ### 3.✅ Instructions 
