@@ -13,58 +13,84 @@ Include Mermaid class diagrams for all classes.
 ```mermaid
 classDiagram
     class MyApp {
-        +build(context)
+        +build()
     }
 
     class MyHomePage {
-        -title: String
+        +title: String
         +createState(): State
     }
 
     class _MyHomePageState {
         -userName: String
-        -selectedMajor: String
-        -majors: List~String~
-        -studentNames: List~String~
-        -selectedName: String
-        -classList: List~Map~
-        -takenClasses: Map~String, bool~
+        -selectedMajor: String?
+        -majors: List<String>
+        -studentNames: List<String>
+        -selectedName: String?
+        -classList: List<Map>
+        -takenClasses: Map<String, bool>
         +initState()
-        +build(context)
         +loadMajors()
         +loadStudentNames()
         +loadClassesForMajor(major: String)
+        +build()
     }
 
     class SchedulePage {
-        -userName: String
+        +userName: String
         +createState(): State
     }
 
     class _SchedulePageState {
-        -selectedNames: List~String~
-        -studentSchedules: Map~String, Map~String, List~String~~
+        -selectedNames: List<String>
+        -studentSchedules: Map<String, Map<String, List<String>>>
         +initState()
         +fetchSchedule()
-        +generateTimes(): List~String~
+        +generateTimes(): List<String>
         +getScheduleColor(name: String): Color
-        +build(context)
+        +build()
     }
 
     class API {
         <<interface>>
-        +GET /api/students
         +GET /api/major
+        +GET /api/students
         +GET /api/classes
         +GET /api/schedule
     }
 
-    MyApp --> MyHomePage : uses
-    MyHomePage --> _MyHomePageState : creates
-    SchedulePage --> _SchedulePageState : creates
-    _MyHomePageState --> API : fetches majors
-    _MyHomePageState --> API : fetches students
-    _MyHomePageState_
+    class Database {
+        <<table>>
+        students
+        +id
+        +name
+        +year_id
+
+        majors
+        +id
+        +major_name
+
+        classes
+        +id
+        +class_name
+        +major_id
+
+        schedule
+        +id
+        +student_id
+        +day
+        +schedules
+    }
+
+    MyApp --> MyHomePage
+    MyHomePage --> _MyHomePageState
+    SchedulePage --> _SchedulePageState
+
+    _MyHomePageState --> API : calls
+    _SchedulePageState --> API : calls
+
+    API --> Database : queries
+
 ```
 
 ### 3.✅ Instructions 
