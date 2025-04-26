@@ -59,7 +59,7 @@ classDiagram
         +GET /api/schedule
     }
 
-   %% Database Tables
+    %% Database Tables
     class classes {
         <<table>>
         +id_class: int
@@ -85,15 +85,15 @@ classDiagram
         +major_name: String
     }
 
-    class Schedule {
+    class schedule {
         <<table>>
         +id_schedule: int
         +id_student: int
         +day: String
         +start_time: String
         +end_time: String
-        
     }
+
     class student {
         <<table>>
         +name: String
@@ -108,15 +108,22 @@ classDiagram
     MyApp --> MyHomePage
     MyHomePage --> _MyHomePageState
     SchedulePage --> _SchedulePageState
-    Schedule : +student_id -> Students.id
 
     _MyHomePageState --> API : calls
     _SchedulePageState --> API : calls
-    API --> students : queries
+
+    %% API to DB Queries
+    API --> student : queries
     API --> major : queries
     API --> classes : queries
-    API --> schedules : queries
-    API --> major_classes : queries
+    API --> schedule : queries
+    API --> majors_classes : queries
+
+    %% Database Relationships
+    schedule --> student : FK id_student → student.name
+    majors_classes --> major : FK id_major → major.id_major
+    majors_classes --> classes : FK id_classes → classes.id_class
+
 
 ```
 
