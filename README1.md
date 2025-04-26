@@ -19,25 +19,20 @@ classDiagram
     +build(BuildContext context) Widget
   }
 
-  class MyHomePage {
-    +title: String
-    +createState() _MyHomePageState
-  }
+ classDiagram
+class _MyHomePageState {
+  String? selectedName
+  String? selectedMajor
+  List<String> majors
+  List<String> studentNames
+  List<String> classList
 
-  class _MyHomePageState {
-    -userName: String
-    -selectedMajor: String?
-    -majors: List<String>
-    -studentNames: List<String>
-    -selectedName: String?
-    -classList: List<Map<String, dynamic>>
-    -takenClasses: Map<String, bool>
-    +initState()
-    +build(BuildContext context) Widget
-    +loadMajors()
-    +loadStudentNames()
-    +loadClassesForMajor(String major)
-  }
+  void initState()
+  Widget build(BuildContext context)
+  Future<void> loadMajors()
+  Future<void> loadStudentNames()
+  Future<void> loadClassesForMajor(String major)
+}
 
   class SchedulePage {
     +userName: String
