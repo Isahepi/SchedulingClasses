@@ -118,7 +118,6 @@ classDiagram
 
     %% App Relationships
     MyApp --> MyHomePage
-    MyHomePage --> _MyHomePageState
     MyHomePage --> SchedulePage
     MyHomePage --> TeachersSchedulePage
     MyHomePage --> MajorsPage
