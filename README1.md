@@ -44,6 +44,14 @@ classDiagram
         +userName: String
         +createState(): State
     }
+    class TeachersSchedulePage {
+        +userName: String
+        +createState(): State
+    }
+    class MajorsPage {
+        +userName: String
+        +createState(): State
+    }
 
     class _SchedulePageState {
         -selectedNames: List<String>
@@ -111,10 +119,19 @@ classDiagram
     %% App Relationships
     MyApp --> MyHomePage
     MyHomePage --> _MyHomePageState
+    MyHomePage --> SchedulePage
+    MyHomePage --> TeachersSchedulePage
+    MyHomePage --> MajorsPage
+
     SchedulePage --> _SchedulePageState
+    TeachersSchedulePage --> _SchedulePageState
+    MajorsPage --> _MyHomePageState
 
     _MyHomePageState --> API : calls
     _SchedulePageState --> API : calls
+    _SchedulePageState --> API : calls
+    _TeachersSchedulePage --> API : calls
+    _MajorsPage --> API : calls
 
     %% API to DB Queries
     API --> student : queries
@@ -127,6 +144,7 @@ classDiagram
     schedule --> student : FK id_student → student.name
     majors_classes --> major : FK id_major → major.id_major
     majors_classes --> classes : FK id_classes → classes.id_class
+
 ```
 
 ### 3.✅ Instructions 
