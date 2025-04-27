@@ -11,7 +11,7 @@ Description of how the app is structured.
 Include Mermaid class diagrams for all classes.
 
 # APP MODEL
-```mermaid
+```
 classDiagram
     class MyApp {
         +build()
@@ -20,6 +20,9 @@ classDiagram
     class MyHomePage {
         +title: String
         +createState(): State
+        +viewStudentsScheduleButton()
+        +viewTeachersScheduleButton()
+        +viewMajorsButton()
     }
 
     class _MyHomePageState {
@@ -125,7 +128,6 @@ classDiagram
     majors_classes --> major : FK id_major → major.id_major
     majors_classes --> classes : FK id_classes → classes.id_class
 ```
-
 ### 3.✅ Instructions 
 __How to install and run the app__
 To run the app, it is necessary to follow a few steps. First, the API must be started, and you should wait until the message "Server running on port 3000" appears. Once the server runs, you can proceed to the main Dart file and execute the program using the command "flutter run." In my specific case, no mobile application is installed on my iPhone; instead, I run the program directly through the development environment.
