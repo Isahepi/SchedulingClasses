@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     loadStudentNames();
   }
 
+//Call the API to get the majors in the SQL table "majors"
   void loadMajors() async {
     final response = await http.get(
       Uri.parse('http://localhost:3000/api/majors'),
@@ -60,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+//Call the API to get the names of the students
   List<String> studentNames = [];
   String? selectedName;
   void loadStudentNames() async {
@@ -80,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Map<String, dynamic>> classList = [];
   Map<String, bool> takenClasses = {};
 
+//Call the API to get the classes for each major
   void loadClassesForMajor(String major) async {
     final response = await http.get(
       Uri.parse('http://localhost:3000/api/classes'),
@@ -220,6 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+//Create the page for the schedule 
 class SchedulePage extends StatefulWidget {
   final String userName;
 
@@ -592,7 +596,7 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
     );
   }
-
+  //Conflicts button, shows the different conflicts depending on the names of the students or professors selected
   String findConflicts() {
     final days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     final conflicts = <String, List<String>>{};
@@ -630,6 +634,7 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 }
 
+//Professors schedule page
 class TeacherSchedulePage extends StatefulWidget {
   final String userName;
 
@@ -666,7 +671,7 @@ class _TeacherSchedulePageState extends State<TeacherSchedulePage> {
     super.initState();
     fetchTeacherSchedule();
   }
-
+  //Get the names of the professors that are in the database
   Future<void> fetchTeacherSchedule() async {
     final response = await http.get(
       Uri.parse('http://localhost:3000/api/schedule'),
@@ -975,6 +980,7 @@ class _TeacherSchedulePageState extends State<TeacherSchedulePage> {
   }
 }
 
+//Creates the major page
 class MajorsPage extends StatefulWidget {
   const MajorsPage({super.key});
 
@@ -993,7 +999,7 @@ class _MajorsPageState extends State<MajorsPage> {
     super.initState();
     loadMajors();
   }
-
+  //Load the majors from the API and shows it in the page for the user to select the major
   Future<void> loadMajors() async {
     final response = await http.get(
       Uri.parse('http://localhost:3000/api/majors'),
@@ -1006,7 +1012,7 @@ class _MajorsPageState extends State<MajorsPage> {
       });
     }
   }
-
+  //Depending on the major they choose the classes will appear, this code conects the logic between the majors and the classes for each major
   Future<void> loadClasses(String majorName) async {
     setState(() {
       isLoading = true;
