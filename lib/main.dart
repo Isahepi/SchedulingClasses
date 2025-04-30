@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-//Main page design
+  //Main page design
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //Button for the view schedule students
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: ElevatedButton(
@@ -158,6 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              //Button for the view professors schedule
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: ElevatedButton(
@@ -188,6 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              //Button for the majors
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: ElevatedButton(
@@ -236,7 +239,8 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   List<String> selectedNames = [];
   Map<String, Map<String, List<Map<String, String>>>> studentSchedules = {};
-  //Grabs the days column and divide each letter and identify what day is it
+
+  //Retrieves the days in the API of shedules and depending on the letter it put it in the schedule
   List<String> convertInitialsToDays(String initials) {
     final Map<String, String> dayMap = {
       'M': 'Monday',

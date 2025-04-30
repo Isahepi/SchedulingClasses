@@ -20,6 +20,9 @@ classDiagram
     class MyHomePage {
         +title: String
         +createState(): State
+        +viewStudentsScheduleButton()
+        +viewTeachersScheduleButton()
+        +viewMajorsButton()
     }
 
     class _MyHomePageState {
@@ -38,6 +41,14 @@ classDiagram
     }
 
     class SchedulePage {
+        +userName: String
+        +createState(): State
+    }
+    class TeachersSchedulePage {
+        +userName: String
+        +createState(): State
+    }
+    class MajorsPage {
         +userName: String
         +createState(): State
     }
@@ -107,10 +118,16 @@ classDiagram
 
     %% App Relationships
     MyApp --> MyHomePage
-    MyHomePage --> _MyHomePageState
+    MyHomePage --> SchedulePage
+    MyHomePage --> TeachersSchedulePage
+    MyHomePage --> MajorsPage
+
     SchedulePage --> _SchedulePageState
+    TeachersSchedulePage --> _SchedulePageState
+    MajorsPage --> _MyHomePageState
 
     _MyHomePageState --> API : calls
+    _SchedulePageState --> API : calls
     _SchedulePageState --> API : calls
 
     %% API to DB Queries
