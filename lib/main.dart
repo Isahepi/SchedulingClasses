@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-
+//Main page design
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -236,7 +236,7 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   List<String> selectedNames = [];
   Map<String, Map<String, List<Map<String, String>>>> studentSchedules = {};
-
+  //Grabs the days column and divide each letter and identify what day is it
   List<String> convertInitialsToDays(String initials) {
     final Map<String, String> dayMap = {
       'M': 'Monday',
@@ -260,7 +260,7 @@ class _SchedulePageState extends State<SchedulePage> {
     super.initState();
     fetchSchedule();
   }
-
+  //This is where flutter grabs the information from the API in the schedule table and post the classes of each student
   Future<void> fetchSchedule() async {
     final response = await http.get(
       Uri.parse('http://localhost:3000/api/schedule'),
@@ -321,7 +321,7 @@ class _SchedulePageState extends State<SchedulePage> {
     ];
     return times;
   }
-
+  //Design of the schedule page
   Color getScheduleColor(String name) {
     final hash = name.hashCode;
     const goldenRatioConjugate = 0.618033988749895;
